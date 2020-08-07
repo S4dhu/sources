@@ -6,7 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', 'babel-polyfill', './client/index.js']
+    main: ['babel-polyfill', './client/index.js']
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -50,7 +50,16 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         loader: "file-loader",
-        options: { name: '/static/[name].[ext]' }
+        options: { name: './dist/static/[name].[ext]' }
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { name: './dist/[name].[ext]' }
+          }
+        ]
       }
     ]
   },

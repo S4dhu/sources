@@ -1,0 +1,18 @@
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paper {
+    display: grid;
+    grid-row-gap: 16px;
+    width: 400px;
+    outline: none;
+    padding: 16px;
+}
+
+.actionBar {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,22 +1,15 @@
 import React from 'react'
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { store } from '../redux/redux-store';
 import { MainPage } from '../pages'
+
+import '../style/style.scss'
 
 function App() {
     return (
-        <MainPage />
-        // <Router>
-        //     <NavBar />
-        //     <Switch>
-        //         <Route path="/sources/list" exact component={SourcesList} />
-        //         <Route path="/sources/create" exact component={SourcesInsert} />
-        //         <Route
-        //             path="/sources/update/:id"
-        //             exact
-        //             component={SourcesUpdate}
-        //         />
-        //     </Switch>
-        // </Router>
+        <Provider store={store}>
+            <MainPage />
+        </Provider>
     )
 }
 
