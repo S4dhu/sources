@@ -1,14 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Box } from '@material-ui/core'
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/Add'
 import PropTypes from 'prop-types'
+import { openModal } from '../../redux/actions'
 
 import './SourceAdd.scss'
 
-const SourceAdd = ({ openModal, model }) => {
-    console.log(model)
+const SourceAdd = ({ dispatch }) => {
     return (
-        <Box onClick={() => openModal({ open: true })} className="addBlock">
+        <Box onClick={() => dispatch(openModal({ modal: 'add' }))} className="addBlock">
             <AddIcon classes={{ root: "addIcon" }} />
         </Box>
     )
@@ -16,7 +17,7 @@ const SourceAdd = ({ openModal, model }) => {
 
 SourceAdd.propTypes = {
     openModal: PropTypes.func,
-    modal: PropTypes.bool
+    modal: PropTypes.string
 }
 
-export default SourceAdd
+export default connect()(SourceAdd)

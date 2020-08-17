@@ -1,25 +1,41 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { refetchSources } from '../../redux/actions'
 import { Box, Link } from '@material-ui/core'
 import PreviewImage from '../PreviewImage'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit';
+import { deleteSourceById, updateSourceById } from '../../api'
+import { getValidUrl } from '../../helpers/checkUrl'
 
 import './SourceBlock.scss'
 
-const SourceBlock = props => {
-    const { name, link } = props
+const SourceBlock = ({ dispatch, source }) => {
+    const deleteSource = async () => {
+        await deleteSourceById(source._id)
+        .then(() => dispatch(refetchSources({ refetchHash: `${source._id}_delete` })))
+        .catch(err => console.error(err))
+    }
+
+    const editSource = async payload => {
+        await updateSourceById(source._id, payload)
+        .then(() => dispatch(refetchSources({ refetchHash: `${source._id}_edit` })))
+    }
+
     return (
         <Box className="sourceBox">
-            <Link target="_blank" href={link} color="initial" underline="none">
-                <PreviewImage imageLink="https://lh3.googleusercontent.com/vA4tG0v4aasE7oIvRIvTkOYTwom07DfqHdUPr6k7jmrDwy_qA_SonqZkw6KX0OXKAdk" />
-                <Box className="title">{name}</Box>
+            <Link className="linkContainer" target="_blank" href={getValidUrl(source.link)} color="initial" underline="none">
+                <PreviewImage imageLink={`${getValidUrl(source.link)}/favicon.ico`} />
+                <Box className="title">{source.name}</Box>
             </Link>
+            <EditIcon onClick={editSource} classes={{ root: 'icon icon_first' }} />
+            <DeleteForeverIcon onClick={deleteSource} classes={{ root: 'icon icon_last' }} />
         </Box>
     )
 }
 
-SourceBlock.propTypes = {
-    name: PropTypes.string,
-    link: PropTypes.string
-}
+const mapStateToProps = (state, ownProps) => ({
+    source: ownProps.source
+})
 
-export default SourceBlock
+export default connect(mapStateToProps)(SourceBlock)

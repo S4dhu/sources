@@ -1,6 +1,6 @@
 const Source = require('../models/source-model')
 
-const createSource = (req, res) => {
+const createSource = async (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -16,7 +16,7 @@ const createSource = (req, res) => {
         return res.status(400).json({ success: false, error: res })
     }
 
-    source
+    await source
         .save()
         .then(() => {
             return res.status(201).json({
@@ -106,11 +106,6 @@ const getSources = async (req, res) => {
     await Source.find({}, (err, sources) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
-        }
-        if (!sources.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Source not found` })
         }
         return res.status(200).json({ success: true, data: sources })
     }).catch(err => console.log(err))

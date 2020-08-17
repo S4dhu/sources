@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { CircularLoading, SourceItems, SourceAddModal } from '../../components'
+import { connect } from 'react-redux'
+import { CircularLoading, SourceItems, FlexModal, SourceAddForm } from '../../components'
 import api from '../../api'
-import { store } from '../../redux/redux-store'
 
 import  './MainPage.scss';
 
-const MainPage = () => {
+const MainPage = ({ modal, refetchHash }) => {
     const [sources, setSources] = useState([])
     const [isLoading, setLoading] = useState(false)
+    console.log(modal)
     useEffect(() => {
-        console.log(store.getState())
         setLoading(true)
         async function fetchData() {
             await api.getAllSources().then(sources => {
@@ -18,7 +18,7 @@ const MainPage = () => {
             })
         }
         fetchData()
-    }, [])
+    }, [refetchHash])
     return (
         <>
         {isLoading ? (
@@ -26,11 +26,18 @@ const MainPage = () => {
         ) : (
             <>
                 <SourceItems sources={sources} />
-                <SourceAddModal isOpen={true} />
+                <FlexModal modal={modal}>
+                    <SourceAddForm />
+                </FlexModal>
             </>
         )}
         </>
     )
 }
 
-export default MainPage
+const mapStateToProps = state => ({
+    modal: state.modal,
+    refetchHash: state.refetchHash
+})
+
+export default connect(mapStateToProps)(MainPage)
