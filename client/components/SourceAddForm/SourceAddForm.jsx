@@ -26,11 +26,11 @@ const SourceAddForm = ({ dispatch }) => {
     
     return (
         <Paper className="paper">
-            <TextField label="Имя ресурса" value={sourceValues.name} onChange={e => handleChange('name', e)} variant="outlined" />
-            <TextField label="Ссылка на ресурс" value={sourceValues.link} onChange={e => handleChange('link', e)} variant="outlined" />
+            <TextField label="Name" value={sourceValues.name} onChange={e => handleChange('name', e)} variant="outlined" />
+            <TextField label="Link" value={sourceValues.link} onChange={e => handleChange('link', e)} variant="outlined" />
             <Box className="actionBar">
-                <Button onClick={confirmNewSource}>ОК</Button>
-                <Button onClick={closeModal}>Отмена</Button>
+                <Button onClick={confirmNewSource}>OK</Button>
+                <Button onClick={closeModal}>CANCEL</Button>
             </Box>
         </Paper>
     )

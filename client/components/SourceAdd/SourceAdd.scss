@@ -1,8 +1,7 @@
 .addBlock {
     position: relative;
-    width: 150px;
-    height: 44px;
-    // border: 2px dashed #757575;
+    width: 180px;
+    height: 48px;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -30,7 +29,7 @@
     }
     & .rotated i {
         left: 0px;
-        top: -53px;
+        top: -65px;
     }
     &:hover .dashing i {
         animation: slideDash 10s infinite linear;
@@ -54,10 +53,11 @@
 
 .addText {
     color: #757575;
-    padding: 12px;
+    padding: 12px 12px 12px 14px;
 }
 
 .addIcon {
     color: #757575;
     font-size: 2.5rem !important;
+    padding: 0 8px;
 }
