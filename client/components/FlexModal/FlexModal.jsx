@@ -4,14 +4,15 @@ import { Modal } from '@material-ui/core'
 import { openModal } from '../../redux/actions'
 
 
-const FlexModal = ({ dispatch, children, modal }) => {
+const FlexModal = ({ dispatch, children, opened }) => {
+    console.log(opened)
 
     const closeModal = () => {
-        dispatch(openModal({ modal: '' }))
+        dispatch(openModal({ modal: { opened: false, type: '' } }))
     }
-
+    // @TODO: Check two redux states at same time and chanched opened props at MainPage
     return (
-        <Modal open={modal !== ''} className="modal" onClose={closeModal}>
+        <Modal open={opened && opened.opened} className="modal" onClose={closeModal}>
             <>
                 {children}
             </>
@@ -19,21 +20,4 @@ const FlexModal = ({ dispatch, children, modal }) => {
     )
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    children: ownProps.children
-})
-
-export default connect(mapStateToProps)(FlexModal)
-
-// import React from 'react'
-// import { Modal } from '@material-ui/core'
-
-// const FlexModal = props => {
-//     return (
-//         <Modal open>
-//             <div>1</div>
-//         </Modal>
-//     )
-// }
-
-// export default FlexModal
+export default connect()(FlexModal)

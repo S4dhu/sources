@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { CircularLoading, SourceItems, FlexModal, SourceAddForm } from '../../components'
+import { CircularLoading, SourceItems, FlexModal, SourceAddForm, SourceEditForm } from '../../components'
 import api from '../../api'
 
 import  './MainPage.scss';
@@ -8,7 +8,7 @@ import  './MainPage.scss';
 const MainPage = ({ modal, refetchHash }) => {
     const [sources, setSources] = useState([])
     const [isLoading, setLoading] = useState(false)
-    console.log(modal)
+    console.log(modal, refetchHash)
     useEffect(() => {
         setLoading(true)
         async function fetchData() {
@@ -26,8 +26,9 @@ const MainPage = ({ modal, refetchHash }) => {
         ) : (
             <>
                 <SourceItems sources={sources} />
-                <FlexModal modal={modal}>
-                    <SourceAddForm />
+                <FlexModal opened={modal}>
+                    {modal && modal.type === 'add' && <SourceAddForm />}
+                    {modal && modal.type === 'edit' && <SourceEditForm />}
                 </FlexModal>
             </>
         )}

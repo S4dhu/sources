@@ -2,18 +2,17 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { openModal, refetchSources } from '../../redux/actions'
 import { Paper, TextField, Box, Button } from '@material-ui/core'
-import { insertSource } from '../../api'
+import { updateSourceById } from '../../api'
 
-import './SourceAddForm.scss'
+import './SourceEditForm.scss'
 
-const SourceAddForm = ({ dispatch }) => {
-    const [sourceValues, setSourceValues] = useState({ name: '', link: '' })
+const SourceEditForm = ({ dispatch, modal }) => {
+    console.log(modal)
+    const [sourceValues, setSourceValues] = useState({ name: modal.data.name, link: modal.data.link })
 
-    const confirmNewSource = async () => {
-        await insertSource({ name: sourceValues.name, link: sourceValues.link })
-            .then(res => dispatch(refetchSources({ refetchHash: `${res.data.id}_add` })))
-            .then(() => dispatch(openModal({ modal: { opened: false, type: '' } })))
-            .catch(err => console.error(err))
+    const editSource = async payload => {
+        await updateSourceById(modal.data._id, payload)
+        .then(() => dispatch(refetchSources({ refetchHash: `${modal.data._id}_edit` })))
     }
 
     const handleChange = (field, event) => {
@@ -29,11 +28,15 @@ const SourceAddForm = ({ dispatch }) => {
             <TextField label="Имя ресурса" value={sourceValues.name} onChange={e => handleChange('name', e)} variant="outlined" />
             <TextField label="Ссылка на ресурс" value={sourceValues.link} onChange={e => handleChange('link', e)} variant="outlined" />
             <Box className="actionBar">
-                <Button onClick={confirmNewSource}>ОК</Button>
+                <Button onClick={() => editSource(sourceValues)}>ОК</Button>
                 <Button onClick={closeModal}>Отмена</Button>
             </Box>
         </Paper>
     )
 }
 
-export default connect()(SourceAddForm)
+const mapStateToProps = state => ({
+    modal: state.modal
+})
+
+export default connect(mapStateToProps)(SourceEditForm)

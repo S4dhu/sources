@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { refetchSources } from '../../redux/actions'
+import { refetchSources, openModal } from '../../redux/actions'
 import { Box, Link } from '@material-ui/core'
 import PreviewImage from '../PreviewImage'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
@@ -17,9 +17,8 @@ const SourceBlock = ({ dispatch, source }) => {
         .catch(err => console.error(err))
     }
 
-    const editSource = async payload => {
-        await updateSourceById(source._id, payload)
-        .then(() => dispatch(refetchSources({ refetchHash: `${source._id}_edit` })))
+    const openEditModal = () => {
+        dispatch(openModal({ modal: { opened: true, type: 'edit', data: source } }))
     }
 
     return (
@@ -28,14 +27,10 @@ const SourceBlock = ({ dispatch, source }) => {
                 <PreviewImage imageLink={`${getValidUrl(source.link)}/favicon.ico`} />
                 <Box className="title">{source.name}</Box>
             </Link>
-            <EditIcon onClick={editSource} classes={{ root: 'icon icon_first' }} />
+            <EditIcon onClick={openEditModal} classes={{ root: 'icon' }} />
             <DeleteForeverIcon onClick={deleteSource} classes={{ root: 'icon icon_last' }} />
         </Box>
     )
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    source: ownProps.source
-})
-
-export default connect(mapStateToProps)(SourceBlock)
+export default connect()(SourceBlock)
