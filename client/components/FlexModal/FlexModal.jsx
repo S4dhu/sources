@@ -5,7 +5,6 @@ import { openModal } from '../../redux/actions'
 
 
 const FlexModal = ({ dispatch, children, opened }) => {
-    console.log(opened)
 
     const closeModal = () => {
         dispatch(openModal({ modal: { opened: false, type: '' } }))

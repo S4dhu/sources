@@ -9,10 +9,10 @@ import './SourceAdd.scss'
 const SourceAdd = ({ dispatch }) => {
     return (
         <Box onClick={() => dispatch(openModal({ modal: { opened: true, type: 'add' } }))} className="addBlock">
-            <span class="dashing"><i></i></span>
-            <span class="dashing rotated"><i></i></span>
-            <span class="dashing"><i></i></span>
-            <span class="dashing rotated"><i></i></span>
+            <span className="dashing"><i></i></span>
+            <span className="dashing rotated"><i></i></span>
+            <span className="dashing"><i></i></span>
+            <span className="dashing rotated"><i></i></span>
             <Typography classes={{ root: 'addText' }}>New source</Typography>
             <AddIcon classes={{ root: 'addIcon' }} />
         </Box>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { openModal, refetchSources } from '../../redux/actions'
 import { Paper, TextField, Box, Button } from '@material-ui/core'
 import { insertSource } from '../../api'
+import { showError } from '../../helpers/pushups'
 
 import './SourceAddForm.scss'
 
@@ -13,7 +14,7 @@ const SourceAddForm = ({ dispatch }) => {
         await insertSource({ name: sourceValues.name, link: sourceValues.link })
             .then(res => dispatch(refetchSources({ refetchHash: `${res.data.id}_add` })))
             .then(() => dispatch(openModal({ modal: { opened: false, type: '' } })))
-            .catch(err => console.error(err))
+            .catch(err => showError('Failed creation'))
     }
 
     const handleChange = (field, event) => {

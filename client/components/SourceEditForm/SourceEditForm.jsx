@@ -7,7 +7,6 @@ import { updateSourceById } from '../../api'
 import './SourceEditForm.scss'
 
 const SourceEditForm = ({ dispatch, modal }) => {
-    console.log(modal)
     const [sourceValues, setSourceValues] = useState({ name: modal.data.name, link: modal.data.link })
 
     const editSource = async payload => {

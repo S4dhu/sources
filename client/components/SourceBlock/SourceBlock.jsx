@@ -5,8 +5,9 @@ import { Box, Link } from '@material-ui/core'
 import PreviewImage from '../PreviewImage'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import EditIcon from '@material-ui/icons/Edit';
-import { deleteSourceById, updateSourceById } from '../../api'
+import { deleteSourceById } from '../../api'
 import { getValidUrl } from '../../helpers/checkUrl'
+import { showSuccess } from '../../helpers/pushups'
 
 import './SourceBlock.scss'
 
@@ -14,6 +15,7 @@ const SourceBlock = ({ dispatch, source }) => {
     const deleteSource = async () => {
         await deleteSourceById(source._id)
         .then(() => dispatch(refetchSources({ refetchHash: `${source._id}_delete` })))
+        .then(() => showSuccess('Test'))
         .catch(err => console.error(err))
     }
 
