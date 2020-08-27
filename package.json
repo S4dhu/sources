@@ -4,6 +4,11 @@
   "private": true,
   "author": "Heinz N.",
   "license": "MIT",
+  "proxy": "http://localhost:3000",
+  "engines": {
+    "node": "12.18.2",
+    "npm": "6.14.5"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -55,8 +60,8 @@
   },
   "scripts": {
     "start": "rm -rf dist && export NODE_ENV=development && nodemon server/index.js",
-    "dev": "rm -rf dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
-    "prod": "rm -rf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
+    "dev": "rm -rf dist && export NODE_ENV=development && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+    "prod": "rm -rf dist && export NODE_ENV=production && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
     "build": "webpack --mode production"
   },
   "eslintConfig": {
