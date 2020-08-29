@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
 import { CircularLoading, SourceItems, FlexModal, SourceAddForm, SourceEditForm, PushUps } from '../../components'
 import api from '../../api'
+import { observer } from 'mobx-react';
 
 import  './MainPage.scss';
 
-const MainPage = ({ modal, refetchHash }) => {
+const MainPage = observer(({ store }) => {
+    console.log('MODAL => ', store.modal)
+    console.log('HASH => ', store.refetchHash)
+    const { modal, refetchHash } = store
     const [sources, setSources] = useState([])
     const [isLoading, setLoading] = useState(false)
     useEffect(() => {
@@ -24,21 +27,16 @@ const MainPage = ({ modal, refetchHash }) => {
             <CircularLoading />
         ) : (
             <>
-                <SourceItems sources={sources} />
-                <FlexModal opened={modal}>
-                    {modal && modal.type === 'add' && <SourceAddForm />}
-                    {modal && modal.type === 'edit' && <SourceEditForm />}
+                <SourceItems sources={sources} store={store} />
+                <FlexModal store={store} opened={modal}>
+                    {modal && modal.type === 'add' && <SourceAddForm store={store} />}
+                    {modal && modal.type === 'edit' && <SourceEditForm store={store} />}
                 </FlexModal>
                 {/* <PushUps /> */}
             </>
         )}
         </>
     )
-}
-
-const mapStateToProps = state => ({
-    modal: state.modal,
-    refetchHash: state.refetchHash
 })
 
-export default connect(mapStateToProps)(MainPage)
+export default MainPage

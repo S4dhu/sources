@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { openModal, refetchSources } from '../../redux/actions'
 import { Paper, TextField, Box, Button } from '@material-ui/core'
 import { updateSourceById } from '../../api'
+import { observer } from 'mobx-react';
 
 import './SourceEditForm.scss'
 
-const SourceEditForm = ({ dispatch, modal }) => {
+const SourceEditForm = observer(({ store }) => {
+    const { modal, setRefetchHash, updateModal } = store
     const [sourceValues, setSourceValues] = useState({ name: modal.data.name, link: modal.data.link })
 
     const editSource = async payload => {
         await updateSourceById(modal.data._id, payload)
-        .then(() => dispatch(refetchSources({ refetchHash: `${modal.data._id}_edit` })))
+        .then(() => setRefetchHash(`${modal.data._id}_${modal.data.name}_${modal.data.link}_edit`))
+        .then(() => updateModal({ ...modal, opened: false, type: '' }))
     }
 
     const handleChange = (field, event) => {
@@ -19,7 +20,7 @@ const SourceEditForm = ({ dispatch, modal }) => {
     }
 
     const closeModal = () => {
-        dispatch(openModal({ modal: { opened: false, type: '' } }))
+        updateModal({ ...modal, opened: false, type: '' })
     }
     
     return (
@@ -32,10 +33,6 @@ const SourceEditForm = ({ dispatch, modal }) => {
             </Box>
         </Paper>
     )
-}
-
-const mapStateToProps = state => ({
-    modal: state.modal
 })
 
-export default connect(mapStateToProps)(SourceEditForm)
+export default SourceEditForm

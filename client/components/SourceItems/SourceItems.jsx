@@ -7,17 +7,18 @@ import { Box } from '@material-ui/core'
 import './SourceItems.scss'
 
 const SourceItems = props => {
-    const { sources } = props;
+    const { sources, store } = props;
     return (
         <Box className="wrapper">
-            {sources.map(s => <SourceBlock key={s._id} source={s} />)}
-            <SourceAdd />
+            {sources.map(s => <SourceBlock key={s._id} source={s} store={store} />)}
+            <SourceAdd store={store} />
         </Box>
     )
 }
 
 SourceItems.propTypes = {
-    sources: PropTypes.instanceOf(Array)
+    sources: PropTypes.instanceOf(Array),
+    store: PropTypes.any,
 }
 
 export default SourceItems

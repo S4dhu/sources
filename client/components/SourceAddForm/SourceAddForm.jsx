@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { openModal, refetchSources } from '../../redux/actions'
 import { Paper, TextField, Box, Button } from '@material-ui/core'
 import { insertSource } from '../../api'
 import { showError } from '../../helpers/pushups'
+import { observer } from 'mobx-react';
 
 import './SourceAddForm.scss'
 
-const SourceAddForm = ({ dispatch }) => {
+const SourceAddForm = observer(({ store }) => {
+    const { setRefetchHash, updateModal, modal } = store
     const [sourceValues, setSourceValues] = useState({ name: '', link: '' })
 
     const confirmNewSource = async () => {
         await insertSource({ name: sourceValues.name, link: sourceValues.link })
-            .then(res => dispatch(refetchSources({ refetchHash: `${res.data.id}_add` })))
-            .then(() => dispatch(openModal({ modal: { opened: false, type: '' } })))
+            .then(res => setRefetchHash(`${res.data.id}_add`))
+            .then(() => updateModal({ ...modal, opened: false, type: '' }))
             .catch(err => showError('Failed creation'))
     }
 
@@ -22,7 +22,7 @@ const SourceAddForm = ({ dispatch }) => {
     }
 
     const closeModal = () => {
-        dispatch(openModal({ modal: { opened: false, type: '' } }))
+        updateModal({ ...modal, opened: false, type: '' })
     }
     
     return (
@@ -35,6 +35,6 @@ const SourceAddForm = ({ dispatch }) => {
             </Box>
         </Paper>
     )
-}
+})
 
-export default connect()(SourceAddForm)
+export default SourceAddForm

@@ -1,13 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Modal } from '@material-ui/core'
-import { openModal } from '../../redux/actions'
+import { observer } from 'mobx-react';
 
 
-const FlexModal = ({ dispatch, children, opened }) => {
+const FlexModal = observer(({ store, children, opened }) => {
+    const { updateModal, modal } = store
 
     const closeModal = () => {
-        dispatch(openModal({ modal: { opened: false, type: '' } }))
+        updateModal({ ...modal, opened: false, type: '' })
     }
     // @TODO: Check two redux states at same time and chanched opened props at MainPage
     return (
@@ -17,6 +17,6 @@ const FlexModal = ({ dispatch, children, opened }) => {
             </>
         </Modal>
     )
-}
+})
 
-export default connect()(FlexModal)
+export default FlexModal
