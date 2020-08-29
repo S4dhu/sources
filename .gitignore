@@ -2,4 +2,5 @@
 /public/build/
 /dist
 
+/yarn.lock
 .DS_Store

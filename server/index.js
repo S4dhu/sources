@@ -14,7 +14,6 @@ const sourceRouter = require('./routes/source-router')
 const config = process.env.NODE_ENV === 'development' ? devConfig : prodConfig
 
 const app = express()
-const apiPort = 3000
 const DIST_DIR = path.join(__dirname, '../dist');
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
 const compiler = webpack(config)
@@ -52,5 +51,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api', sourceRouter)
-
-app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
+process.env.NODE_ENV === 'development'
+    ?   app.listen(3000, () => console.log(`Server running on port ${3000}`))
+    :   app.listen(80, '37.140.192.195')

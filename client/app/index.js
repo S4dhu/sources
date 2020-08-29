@@ -1,15 +1,16 @@
 import React from 'react'
-import { Provider } from 'react-redux';
-import { store } from '../redux/redux-store';
 import { MainPage } from '../pages'
+import { Store } from '../store'
 
 import '../style/style.scss'
 
+const appStore = new Store();
+
 function App() {
     return (
-        <Provider store={store}>
-            <MainPage />
-        </Provider>
+        <>
+            <MainPage store={appStore} />
+        </>
     )
 }
 
