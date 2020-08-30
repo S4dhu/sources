@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', 'babel-polyfill', './client/index.js']
+    index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', 'babel-polyfill', './client/index.js']
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -60,7 +60,7 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./client/index.html",
-      filename: "./index.html",
+      filename: "./client/index.html",
       favicon: "favicon.png",
       excludeChunks: [ 'server' ]
     }),
