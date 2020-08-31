@@ -50,14 +50,14 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         loader: "file-loader",
-        options: { name: './dist/static/[name].[ext]' }
+        options: { name: './src/images/[name].[ext]' }
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
-            options: { name: './dist/[name].[ext]' }
+            options: { name: './src/fonts/[name].[ext]' }
           }
         ]
       }

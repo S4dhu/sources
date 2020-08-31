@@ -9,7 +9,7 @@ const FlexModal = observer(({ store, children, opened }) => {
     const closeModal = () => {
         updateModal({ ...modal, opened: false, type: '' })
     }
-    // @TODO: Check two redux states at same time and chanched opened props at MainPage
+    
     return (
         <Modal open={opened && opened.opened} className="modal" onClose={closeModal}>
             <>
