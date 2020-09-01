@@ -1,0 +1,21 @@
+.login_form {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    width: 400px;
+    height: auto;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login_actionBar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    &_button {
+        width: 100%;
+    }
+}

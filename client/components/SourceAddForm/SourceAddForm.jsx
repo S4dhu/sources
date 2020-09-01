@@ -7,11 +7,11 @@ import { observer } from 'mobx-react';
 import './SourceAddForm.scss'
 
 const SourceAddForm = observer(({ store }) => {
-    const { setRefetchHash, updateModal, modal } = store
+    const { setRefetchHash, updateModal, modal, user } = store
     const [sourceValues, setSourceValues] = useState({ name: '', link: '' })
 
     const confirmNewSource = async () => {
-        await insertSource({ name: sourceValues.name, link: sourceValues.link })
+        await insertSource({ name: sourceValues.name, link: sourceValues.link, user: user.username })
             .then(res => setRefetchHash(`${res.data.id}_add`))
             .then(() => updateModal({ ...modal, opened: false, type: '' }))
             .catch(err => showError('Failed creation'))

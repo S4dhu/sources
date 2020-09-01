@@ -9,7 +9,6 @@ const FlexModal = observer(({ store, children, opened }) => {
     const closeModal = () => {
         updateModal({ ...modal, opened: false, type: '' })
     }
-    
     return (
         <Modal open={opened && opened.opened} className="modal" onClose={closeModal}>
             <>

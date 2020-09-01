@@ -87,18 +87,18 @@ const deleteSource = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-const getSourceById = async (req, res) => {
-    await Source.findOne({ _id: req.params.id }, (err, source) => {
+const getSourcesByUser = async (req, res) => {
+    await Source.find({ user: req.params.user }, (err, sources) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!source) {
+        if (!sources) {
             return res
                 .status(404)
-                .json({ success: false, error: `Source not found` })
+                .json({ success: false, error: `Sources not found` })
         }
-        return res.status(200).json({ success: true, data: source })
+        return res.status(200).json({ success: true, data: sources })
     }).catch(err => console.log(err))
 }
 
@@ -116,5 +116,5 @@ module.exports = {
     updateSource,
     deleteSource,
     getSources,
-    getSourceById,
+    getSourcesByUser,
 }

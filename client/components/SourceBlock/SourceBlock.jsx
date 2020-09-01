@@ -5,7 +5,6 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import EditIcon from '@material-ui/icons/Edit';
 import { deleteSourceById } from '../../api'
 import { getValidUrl } from '../../helpers/checkUrl'
-import { showSuccess } from '../../helpers/pushups'
 import { observer } from 'mobx-react';
 
 import './SourceBlock.scss'
@@ -15,7 +14,6 @@ const SourceBlock = observer(({ store, source }) => {
     const deleteSource = async () => {
         await deleteSourceById(source._id)
         .then(() => setRefetchHash(`${source._id}_delete`))
-        .then(() => showSuccess('Test'))
         .catch(err => console.error(err))
     }
 

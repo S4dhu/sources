@@ -6,5 +6,22 @@ import SourceEditForm from './SourceEditForm'
 import FlexModal from './FlexModal'
 import PushUps from './PushUps'
 import Footer from './Footer'
+import SearchInput from './SearchInput'
+import LoginForm from './LoginForm'
+import RegisterForm from './RegisterForm'
+import UserInfo from './UserInfo'
 
-export { CircularLoading, SourceBlock, SourceItems, SourceAddForm, SourceEditForm, FlexModal, PushUps, Footer }
+export {
+  CircularLoading,
+  SourceBlock,
+  SourceItems,
+  SourceAddForm,
+  SourceEditForm,
+  FlexModal,
+  PushUps,
+  Footer,
+  SearchInput,
+  LoginForm,
+  RegisterForm,
+  UserInfo
+}

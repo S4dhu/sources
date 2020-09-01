@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+const config = require('../config.json')
+
 const uri = process.env.NODE_ENV === 'production'
-            ? 'mongodb+srv://heinz:89232478866Aa@cluster0.biyrc.mongodb.net/wiseness?retryWrites=true&w=majority'
+            ? process.env.MONGO_URI || config.connectionString
             : 'mongodb://127.0.0.1:27017/sources'
 
 mongoose

@@ -1,0 +1,20 @@
+.userInfo_wrapper {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  gap: 16px;
+}
+
+.userInfo_exitIcon {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  &:hover {
+    background: #3d3d3d;
+    opacity: 0.7;
+  }
+}

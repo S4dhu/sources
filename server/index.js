@@ -10,6 +10,7 @@ const webpack = require('webpack')
 
 const db = require('./db')
 const sourceRouter = require('./routes/source-router')
+const userRouter = require('./routes/user-router')
 
 const config = process.env.NODE_ENV === 'development' ? devConfig : prodConfig
 
@@ -51,6 +52,7 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
+app.use('/users', userRouter)
 app.use('/api', sourceRouter)
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
