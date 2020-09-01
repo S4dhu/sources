@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { CircularLoading, SourceItems, FlexModal, SourceAddForm, SourceEditForm, PushUps } from '../../components'
+import { CircularLoading, SourceItems, FlexModal, SourceAddForm, SourceEditForm, Footer, PushUps } from '../../components'
 import api from '../../api'
 import { observer } from 'mobx-react';
 
 import  './MainPage.scss';
 
 const MainPage = observer(({ store }) => {
-    console.log('MODAL => ', store.modal)
-    console.log('HASH => ', store.refetchHash)
     const { modal, refetchHash } = store
     const [sources, setSources] = useState([])
     const [isLoading, setLoading] = useState(false)
@@ -33,6 +31,7 @@ const MainPage = observer(({ store }) => {
                     {modal && modal.type === 'edit' && <SourceEditForm store={store} />}
                 </FlexModal>
                 {/* <PushUps /> */}
+                <Footer />
             </>
         )}
         </>

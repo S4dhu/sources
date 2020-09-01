@@ -29,8 +29,10 @@ const SourceBlock = observer(({ store, source }) => {
                 <PreviewImage imageLink={`https://www.google.com/s2/favicons?domain=${getValidUrl(source.link)}`} />
                 <Box className="title">{source.name}</Box>
             </Link>
-            <EditIcon onClick={openEditModal} classes={{ root: 'icon' }} />
-            <DeleteForeverIcon onClick={deleteSource} classes={{ root: 'icon icon_last' }} />
+            <Box className="actions">
+                <EditIcon onClick={openEditModal} classes={{ root: 'icon icon_first' }} />
+                <DeleteForeverIcon onClick={deleteSource} classes={{ root: 'icon icon_last' }} />
+            </Box>
         </Box>
     )
 })

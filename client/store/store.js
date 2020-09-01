@@ -7,8 +7,6 @@ export class Store {
     @observable refetchHash = ''
 
     @action updateModal = (value) => {
-        console.log(value)
-        console.log(this.modal)
         this.modal = value
     }
 

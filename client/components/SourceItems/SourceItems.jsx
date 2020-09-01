@@ -10,8 +10,8 @@ const SourceItems = props => {
     const { sources, store } = props;
     return (
         <Box className="wrapper">
-            {sources.map(s => <SourceBlock key={s._id} source={s} store={store} />)}
             <SourceAdd store={store} />
+            {sources.map(s => <SourceBlock key={s._id} source={s} store={store} />)}
         </Box>
     )
 }
