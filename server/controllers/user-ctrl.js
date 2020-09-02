@@ -55,13 +55,15 @@ try {
   let user = await User.findOne({ username })
   if (user) {
     return res.status(400).json({
-      message: "Username already exists!"
+      type: 'username',
+      message: "Username already exists"
     });
   }
   let userEmail = await User.findOne({ email })
   if (userEmail) {
     return res.status(400).json({
-      message: "Email already exists!"
+      type: 'email',
+      message: "Email already exists"
     })
   }
 
