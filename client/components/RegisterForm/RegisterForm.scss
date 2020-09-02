@@ -1,21 +1,39 @@
-.register_form {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -55%);
-    width: 400px;
-    height: auto;
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
+.register {
+    &_form {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        width: 400px;
+        height: auto;
+        padding: 16px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
 
-.register_actionBar {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    &_button {
-        width: 100%;
+    &_actionBar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        &_button {
+            width: 100%;
+        }
+        &_textAction {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            &_link {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &_failMessage {
+        padding: 8px 24px;
+        border-radius: 8px;
+        background-color: #ffcdd2;
     }
 }
