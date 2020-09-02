@@ -18,21 +18,27 @@ const LoginForm = observer((props) => {
   }
 
   const tryLogin = async () => {
-    await api.signIn({ username: userValues.username, password: userValues.password })
-    .then(res => setCookie('token', res.data.token))
-    .then(() => {
-      api.getUser(getCookie('token'))
-      .then(userData => setUser({ username: userData.data.username, email: userData.data.email, token: getCookie('token') }))
-    })
-    .catch((err) => setLoginFail({ state: true, message: err.response.data.message }))
+    if (userValues.username === '') {
+      setLoginFail({ state: true, type: 'username', message: 'Username can\'t be blank' })
+    } else if (userValues.password === '') {
+      setLoginFail({ state: true, type: 'password', message: 'Password can\'t be blank' })
+    } else {
+      await api.signIn({ username: userValues.username, password: userValues.password })
+      .then(res => setCookie('token', res.data.token))
+      .then(() => {
+        api.getUser(getCookie('token'))
+        .then(userData => setUser({ username: userData.data.username, email: userData.data.email, token: getCookie('token') }))
+      })
+      .catch((err) => setLoginFail({ state: true, type: 'both', message: err.response.data.message }))
+    }
   }
   
   return (
     <Paper classes={{ root: "login_form" }}>
-      <TextField error={loginFail.state} label="Username" value={userValues.username} onChange={e => handleChange('username', e)} variant="outlined" />
-      <TextField error={loginFail.state} label="Password" value={userValues.password} onChange={e => handleChange('password', e)} variant="outlined" type="password" />
+      {loginFail.type === 'both' && loginFail.message && <Typography classes={{ root: "login_failMessage" }}>{loginFail.message}</Typography>}
+      <TextField error={loginFail.state && (loginFail.type === 'username' || loginFail.type === 'both')} helperText={loginFail.type === 'username' && loginFail.message} label="Username" value={userValues.username} onChange={e => handleChange('username', e)} variant="outlined" />
+      <TextField error={loginFail.state && (loginFail.type === 'password' || loginFail.type === 'both')} helperText={loginFail.type === 'password' && loginFail.message} label="Password" value={userValues.password} onChange={e => handleChange('password', e)} variant="outlined" type="password" />
       <Box classes={{ root: "login_actionBar" }}>
-        {loginFail.message && <Typography classes={{ root: "login_failMessage" }}>{loginFail.message}</Typography>}
         <Button onClick={tryLogin} classes={{ root: "login_actionBar_button" }} variant="contained" color="primary">Sign In</Button>
         <Box classes={{ root: "login_actionBar_textAction" }}>
           <Typography>Don't have an account?</Typography>

@@ -9,12 +9,14 @@ const signin = async (req, res) => {
     let user = await User.findOne({ username: regex }) || await User.findOne({ email: regex })
     if (!user)
       return res.status(400).json({
+        type: "username",
         message: "Incorrect username or password"
       });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
       return res.status(400).json({
+        type: "password",
         message: "Incorrect username or password"
       });
 
