@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? process.env.API_URI || '//194.58.111.114/api' : 'http://localhost:3000/api',
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.API_URI || '//wiseness.ru/api' : 'http://localhost:3000/api',
 })
 
 const userApi = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? process.env.API_URI || '//194.58.111.114/users' : 'http://localhost:3000/users',
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.API_URI || '//wiseness.ru/users' : 'http://localhost:3000/users',
 })
 
 export const insertSource = payload => api.post(`/source`, payload)

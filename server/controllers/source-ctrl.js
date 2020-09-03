@@ -51,8 +51,7 @@ const updateSource = async (req, res) => {
             })
         }
         source.name = body.name
-        source.time = body.time
-        source.rating = body.rating
+        source.link = body.link
         source
             .save()
             .then(() => {
