@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LoginForm, RegisterForm, Footer } from '../../components'
+import { LoginForm, RegisterForm, Footer } from 'components'
 import { observer } from 'mobx-react';
 
 const LoginPage = observer(({ store }) => {

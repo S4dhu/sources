@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { MainPage, LoginPage } from '../pages'
-import { PushUps } from '../components'
+import { PushUps } from 'components'
 import { observer } from 'mobx-react';
-import api from '../api'
-import { getCookie } from '../helpers/cookies'
+import api from 'api'
+import { getCookie } from 'helpers/cookies'
 
 import '../style/style.scss'
 

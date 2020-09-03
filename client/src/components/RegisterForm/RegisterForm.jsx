@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Button, Paper, TextField, Typography, Link } from '@material-ui/core'
-import api from '../../api'
-import { showSuccess } from '../../helpers/pushups'
-import { validateEmail } from '../../helpers/validation'
+import api from 'api'
+import { showSuccess } from 'helpers/pushups'
+import { validateEmail } from 'helpers/validation'
 
 import './RegisterForm.scss'
 

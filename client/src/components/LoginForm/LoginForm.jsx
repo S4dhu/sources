@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Paper, TextField, Button, Typography, Link } from '@material-ui/core'
-import api from '../../api'
-import { getCookie, setCookie } from '../../helpers/cookies'
+import api from 'api'
+import { getCookie, setCookie } from 'helpers/cookies'
 import { observer } from 'mobx-react';
 
 import './LoginForm.scss'

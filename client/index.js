@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './app'
-import { Store } from './store'
+import App from './src/app'
+import { Store } from './src/store'
 
 const appStore = new Store();
 

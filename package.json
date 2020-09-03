@@ -57,7 +57,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "start": "rm -rf dist && export NODE_ENV=development && nodemon server/index.js",
+    "start": "rm -rf dist && export NODE_ENV=development && NODE_PATH=client/ && nodemon server/index.js",
     "dev": "rm -rf dist && export NODE_ENV=development && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
     "prod": "rm -rf dist && export NODE_ENV=production && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
     "build": "webpack --mode production"

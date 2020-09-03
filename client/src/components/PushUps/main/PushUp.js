@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Snackbar, SnackbarContent } from '@material-ui/core';
 import classNames from 'classnames';
 import Message from './Message';
-import { useShake } from '../../../helpers/pushups';
+import { useShake } from 'helpers/pushups';
 
 const useStyles = makeStyles(() => ({
   root: ({ color }) => ({

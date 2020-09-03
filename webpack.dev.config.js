@@ -14,6 +14,14 @@ module.exports = {
   mode: 'development',
   target: 'web',
   devtool: '#source-map',
+  resolve: {
+    alias: {
+       components: path.resolve(__dirname, 'client/src/components/'),
+       helpers: path.resolve(__dirname, 'client/src/helpers/'),
+       api: path.resolve(__dirname, 'client/src/api/'),
+       store: path.resolve(__dirname, 'client/src/store/')
+    }
+  },
   module: {
     rules: [
       {

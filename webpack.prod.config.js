@@ -15,6 +15,14 @@ module.exports = {
   },
   target: 'web',
   devtool: '#source-map',
+  resolve: {
+    alias: {
+       components: path.resolve(__dirname, 'client/src/components/'),
+       helpers: path.resolve(__dirname, 'client/src/helpers/'),
+       api: path.resolve(__dirname, 'client/src/api/'),
+       store: path.resolve(__dirname, 'client/src/store/')
+    }
+  },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({

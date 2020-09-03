@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { usePushUp } from '../../../helpers/pushups';
+import { usePushUp } from 'helpers/pushups';
 import PushUp from './PushUp';
 import Cross from './Cross';
 import styles from './PushUps.style';

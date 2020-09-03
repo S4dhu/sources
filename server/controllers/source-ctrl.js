@@ -76,13 +76,7 @@ const deleteSource = async (req, res) => {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!source) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Source not found` })
-        }
-
-        return res.status(200).json({ success: true, data: source })
+        return res.status(200).json({ success: true })
     }).catch(err => console.log(err))
 }
 

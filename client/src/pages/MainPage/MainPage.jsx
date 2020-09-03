@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { CircularLoading, SourceItems, FlexModal, SourceAddForm, SourceEditForm, Footer, UserInfo } from '../../components'
-import api from '../../api'
+import { CircularLoading, SourceItems, FlexModal, SourceAddForm, SourceEditForm, Footer, UserInfo } from 'components'
+import api from 'api'
 import { observer } from 'mobx-react';
 
 import  './MainPage.scss';

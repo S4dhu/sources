@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Typography } from '@material-ui/core'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { observer } from 'mobx-react';
-import { deleteCookie } from '../../helpers/cookies'
+import { deleteCookie } from 'helpers/cookies'
 
 import  './UserInfo.scss';
 

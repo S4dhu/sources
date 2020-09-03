@@ -3,8 +3,8 @@ import { Box, Link } from '@material-ui/core'
 import PreviewImage from '../PreviewImage'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import EditIcon from '@material-ui/icons/Edit';
-import { deleteSourceById } from '../../api'
-import { getValidUrl } from '../../helpers/checkUrl'
+import { deleteSourceById } from 'api'
+import { getValidUrl } from 'helpers/checkUrl'
 import { observer } from 'mobx-react';
 
 import './SourceBlock.scss'

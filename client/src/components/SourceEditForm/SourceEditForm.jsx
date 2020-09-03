@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Paper, TextField, Box, Button } from '@material-ui/core'
-import { updateSourceById } from '../../api'
+import { updateSourceById } from 'api'
 import { observer } from 'mobx-react';
-import { validateURL } from '../../helpers/validation'
+import { validateURL } from 'helpers/validation'
 
 import './SourceEditForm.scss'
 
