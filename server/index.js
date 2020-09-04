@@ -18,7 +18,6 @@ const app = express()
 const apiPort = 3000
 const DIST_DIR = path.join(__dirname, '../dist');
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
-const compiler = webpack(config)
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -29,6 +28,7 @@ app.use(express.static(DIST_DIR));
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 if (process.env.NODE_ENV === 'development') {
+    const compiler = webpack(config)
     app.use(webpackDevMiddleware(compiler, {
         publicPath: config.output.publicPath
     }))
