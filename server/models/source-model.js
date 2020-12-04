@@ -6,6 +6,7 @@ const Source = new Schema(
         name: { type: String, required: true },
         link: { type: String, required: true },
         user: { type: String, required: true },
+        category: { type: String, required: false }
     },
     { timestamps: true },
 )

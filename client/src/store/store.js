@@ -7,6 +7,7 @@ export class Store {
     @observable refetchHash = '';
     @observable sources = [];
     @observable user = null;
+    @observable sidebarOpened = true;
 
     @action updateModal = (value) => {
         this.modal = value
@@ -22,5 +23,9 @@ export class Store {
 
     @action setUser = (userData) => {
         this.user = userData
+    }
+
+    @action toggleSidebar = () => {
+        this.sidebarOpened = !this.sidebarOpened
     }
 }

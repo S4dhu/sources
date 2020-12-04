@@ -1,0 +1,30 @@
+.sidebar-wrapper {
+  position: relative;
+  width: 300px;
+  background: #3d3d3d;
+  position: absolute;
+  left: 0;
+  bottom: 48px;
+  top: 0;
+  &_closed {
+    left: -300px;
+  }
+}
+
+.sidebar-icon {
+  position: absolute;
+  top: 8px;
+  right: -36px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  &_expanded {
+    transform: scale(-1, -1);
+    right: 8px;
+  }
+  &:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
