@@ -8,10 +8,23 @@ body {
     height: 100%;
     background-color: #212121;
     font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+hr {
+    margin: 8px 12px;
+    opacity: 0.5;
+}
+
+p {
+    margin: 0;
 }
 
 #root {
-    height: calc(100% - 64px);
+    height: calc(100% - 48px);
+    & div, svg {
+        transition: all 0.2s ease;
+    }
 }
 
 @font-face {

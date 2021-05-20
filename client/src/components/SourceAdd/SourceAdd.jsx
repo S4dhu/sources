@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@material-ui/core'
-import AddIcon from '@material-ui/icons/Add'
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import { observer } from 'mobx-react';
 
 import './SourceAdd.scss'
@@ -14,7 +14,7 @@ const SourceAdd = observer(({ store }) => {
             <span className="dashing"><i></i></span>
             <span className="dashing rotated"><i></i></span>
             <Typography classes={{ root: 'addText' }}>New source</Typography>
-            <AddIcon classes={{ root: 'addIcon' }} />
+            <AddRoundedIcon classes={{ root: 'addIcon' }} />
         </Box>
     )
 })

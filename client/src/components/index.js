@@ -10,6 +10,8 @@ import SearchInput from './SearchInput'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import UserInfo from './UserInfo'
+import Sidebar from './Sidebar'
+import Header from './Header'
 
 export {
   CircularLoading,
@@ -23,5 +25,7 @@ export {
   SearchInput,
   LoginForm,
   RegisterForm,
-  UserInfo
+  UserInfo,
+  Sidebar,
+  Header,
 }

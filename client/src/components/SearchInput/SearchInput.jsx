@@ -8,7 +8,7 @@ const SearchInput = props => {
     const { handleChange } = props;
     return (
         <Box className="input_wrapper">
-            <InputBase onChange={e => handleChange(e.target.value)} classes={{ root: 'input '}} placeholder="Search" />
+            <InputBase onChange={e => handleChange(e.target.value)} classes={{ root: 'input '}} placeholder="Search..." />
         </Box>
     )
 }

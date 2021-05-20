@@ -12,10 +12,14 @@ export const insertSource = payload => api.post(`/source`, payload)
 export const getAllSources = () => api.get(`/sources`)
 export const updateSourceById = (id, payload) => api.put(`/source/${id}`, payload)
 export const deleteSourceById = id => api.delete(`/source/${id}`)
-export const getSourcesByUser = user => api.get(`/sources/${user}`)
+export const getSourcesByUser = (user, category) => api.get(`/sources/${user}/${category}`)
 export const signIn = payload => userApi.post(`/signin`, payload)
 export const signUp = payload => userApi.post(`/signup`, payload)
 export const getUser = token => userApi.get(`/getUser`, { headers: { 'Content-Type': 'application/json', 'token': token } })
+export const insertCategory = payload => api.post(`/category`, payload)
+export const updateCategoryById = (id, payload) => api.put(`/category/${id}`, payload)
+export const deleteCategoryById = id => api.delete(`/category/${id}`)
+export const getCategoriesByUser = user => api.get(`/categories/${user}`)
 
 const apis = {
   insertSource,
@@ -26,6 +30,10 @@ const apis = {
   signIn,
   signUp,
   getUser,
+  insertCategory,
+  updateCategoryById,
+  deleteCategoryById,
+  getCategoriesByUser,
 }
 
 export default apis
