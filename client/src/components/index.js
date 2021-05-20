@@ -11,6 +11,7 @@ import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import UserInfo from './UserInfo'
 import Sidebar from './Sidebar'
+import Header from './Header'
 
 export {
   CircularLoading,
@@ -25,5 +26,6 @@ export {
   LoginForm,
   RegisterForm,
   UserInfo,
-  Sidebar
+  Sidebar,
+  Header,
 }

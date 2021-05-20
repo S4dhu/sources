@@ -52,6 +52,7 @@ const updateSource = async (req, res) => {
         }
         source.name = body.name
         source.link = body.link
+        source.category = body.category
         source
             .save()
             .then(() => {
@@ -81,7 +82,11 @@ const deleteSource = async (req, res) => {
 }
 
 const getSourcesByUser = async (req, res) => {
-    await Source.find({ user: req.params.user }, (err, sources) => {
+    let findArgs = {}
+    if (req.params.category === 'all') findArgs = { user: req.params.user }
+    else findArgs = { user: req.params.user, category: req.params.category }
+
+    await Source.find(findArgs, (err, sources) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

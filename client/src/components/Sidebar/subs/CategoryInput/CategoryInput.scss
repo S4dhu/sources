@@ -1,0 +1,58 @@
+.category-input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.category-input {
+  width: 100%;
+  & label.Mui-focused {
+    color: #ffffff,
+  }
+  & .MuiInput-underline:after {
+    border-bottom-color: rgba(255, 255, 255, 1),
+  }
+  & p {
+    position: absolute;
+    bottom: -20px;
+  }
+}
+
+.category-input input {
+  width: 100%;
+  color: #ffffff;
+  padding-right: 32px;
+}
+
+.category-input div::before {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+// .category-input div::after {
+//   transform: scale(0) !important;
+// }
+
+.category-input div:hover::before {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7) !important;
+}
+
+.category-add-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+  &_ok-gap {
+    right: 40px;
+  }
+  &_cancel-gap {
+    right: 16px;
+  }
+}

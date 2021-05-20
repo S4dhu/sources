@@ -1,14 +1,31 @@
 .sidebar-wrapper {
   position: relative;
-  width: 300px;
-  background: #3d3d3d;
+  width: 250px;
+  background-color: #3d3d3d !important;
   position: absolute;
   left: 0;
   bottom: 48px;
   top: 0;
+  color: #ffffff !important;
+  padding: 8px 0;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &_closed {
-    left: -300px;
+    left: -250px;
+    overflow: initial;
   }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.sidebar-title {
+  width: 100%;
+  line-height: 40px;
+  font-size: 24px;
+  display: flex;
+  margin: 0 16px 8px 16px;
 }
 
 .sidebar-icon {
