@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  gap: 16px;
 }
 
 .userInfo_exitIcon {
@@ -14,7 +13,14 @@
   padding: 8px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 6px;
+  margin-left: 16px;
   &:hover {
     background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .userInfo_userName {
+    display: none;
   }
 }

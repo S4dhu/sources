@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Paper, TextField, Button, Typography, Link } from '@material-ui/core'
 import api from 'api'
@@ -17,14 +17,15 @@ const LoginForm = observer((props) => {
     setUserValues({ ...userValues, [field]: event.target.value })
   }
 
-  const tryLogin = async () => {
+  const tryLogin = async e => {
     if (userValues.username === '') {
       setLoginFail({ state: true, type: 'username', message: 'Username can\'t be blank' })
     } else if (userValues.password === '') {
       setLoginFail({ state: true, type: 'password', message: 'Password can\'t be blank' })
     } else {
+      const daysToExpire = new Date(2147483647 * 1000).toUTCString()
       await api.signIn({ username: userValues.username, password: userValues.password })
-      .then(res => setCookie('token', res.data.token))
+      .then(res => setCookie('token', res.data.token, { expires: daysToExpire }))
       .then(() => {
         api.getUser(getCookie('token'))
         .then(userData => setUser({ username: userData.data.username, email: userData.data.email, token: getCookie('token') }))
@@ -32,14 +33,27 @@ const LoginForm = observer((props) => {
       .catch((err) => setLoginFail({ state: true, type: 'both', message: err.response.data.message }))
     }
   }
+
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        event.preventDefault();
+        tryLogin();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [userValues]);
   
   return (
     <Paper classes={{ root: "login_form" }}>
       {loginFail.type === 'both' && loginFail.message && <Typography classes={{ root: "login_failMessage" }}>{loginFail.message}</Typography>}
       <TextField error={loginFail.state && (loginFail.type === 'username' || loginFail.type === 'both')} helperText={loginFail.type === 'username' && loginFail.message} label="Username" value={userValues.username} onChange={e => handleChange('username', e)} variant="outlined" />
-      <TextField error={loginFail.state && (loginFail.type === 'password' || loginFail.type === 'both')} helperText={loginFail.type === 'password' && loginFail.message} label="Password" value={userValues.password} onChange={e => handleChange('password', e)} variant="outlined" type="password" />
+      <TextField style={{ marginTop: '16px' }} error={loginFail.state && (loginFail.type === 'password' || loginFail.type === 'both')} helperText={loginFail.type === 'password' && loginFail.message} label="Password" value={userValues.password} onChange={e => handleChange('password', e)} variant="outlined" type="password" />
       <Box classes={{ root: "login_actionBar" }}>
-        <Button onClick={tryLogin} classes={{ root: "login_actionBar_button" }} variant="contained" color="primary">Sign In</Button>
+        <Button type="submit" onClick={tryLogin} classes={{ root: "login_actionBar_button" }} variant="contained" color="primary">Sign In</Button>
         <Box classes={{ root: "login_actionBar_textAction" }}>
           <Typography>Don't have an account?</Typography>
           <Link classes={{ root: "login_actionBar_textAction_link" }} onClick={() => handleChangeFormType('register')}>Sign Up!</Link>

@@ -50,9 +50,9 @@ const RegisterForm = props => {
 
   return (
     <Paper classes={{ root: "login_form" }}>
-      <TextField error={registerFail.state && registerFail.type === 'username'} helperText={registerFail.type === 'username' && registerFail.message} label="Username" value={userValues.username} onChange={e => handleChange('username', e)} variant="outlined" />
-      <TextField error={registerFail.state && registerFail.type === 'email'} helperText={registerFail.type === 'email' && registerFail.message} label="Email" value={userValues.email} onChange={e => handleChange('email', e)} variant="outlined" />
-      <TextField error={incorrectPassword.state} helperText={registerFail.type === 'shortPassword' && registerFail.message} label="Password" value={userValues.password} onChange={e => handleChange('password', e)} variant="outlined" type="password" />
+      <TextField style={{ marginBottom: '16px' }} error={registerFail.state && registerFail.type === 'username'} helperText={registerFail.type === 'username' && registerFail.message} label="Username" value={userValues.username} onChange={e => handleChange('username', e)} variant="outlined" />
+      <TextField style={{ marginBottom: '16px' }} error={registerFail.state && registerFail.type === 'email'} helperText={registerFail.type === 'email' && registerFail.message} label="Email" value={userValues.email} onChange={e => handleChange('email', e)} variant="outlined" />
+      <TextField style={{ marginBottom: '16px' }} error={incorrectPassword.state} helperText={registerFail.type === 'shortPassword' && registerFail.message} label="Password" value={userValues.password} onChange={e => handleChange('password', e)} variant="outlined" type="password" />
       <TextField error={incorrectPassword.state} helperText={incorrectPassword.type === 'mismatch' && "Password mismatch"} label="Confirm password" value={confirmationalPassword} onChange={e => handleChangeConfirmationalPassword(e)} variant="outlined" type="password" />
       <Box classes={{ root: "register_actionBar" }}>
       {/* {registerFail.message && <Typography classes={{ root: "register_failMessage" }}>{registerFail.message}</Typography>} */}

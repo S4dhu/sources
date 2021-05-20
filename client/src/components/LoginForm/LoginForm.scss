@@ -9,14 +9,13 @@
         padding: 16px 24px;
         display: flex;
         flex-direction: column;
-        gap: 16px;
     }
 
     &_actionBar {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 16px;
+        margin-top: 16px;
         &_button {
             width: 100%;
         }
@@ -24,9 +23,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            margin-top: 8px;
             &_link {
                 cursor: pointer;
+                margin-left: 4px !important;
             }
         }
     }
@@ -36,7 +36,7 @@
         align-items: center;
         justify-content: center;
         width: 250px;
-        margin: 0 auto !important;
+        margin: 0 auto 16px !important;
         padding: 8px 24px;
         border-radius: 8px;
         background-color: #ffcdd2;

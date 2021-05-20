@@ -14,7 +14,7 @@ const UserInfo = observer(({ store }) => {
   }
   return (
     <Box className="userInfo_wrapper">
-      <Typography variant="h6">{user.username}</Typography>
+      <Typography className="userInfo_userName" variant="h6">{user.username}</Typography>
       <ExitToAppIcon className="userInfo_exitIcon" onClick={logout}/>
     </Box>
   )

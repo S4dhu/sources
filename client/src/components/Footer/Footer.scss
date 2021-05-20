@@ -1,6 +1,5 @@
 .footer {
     display: flex;
-    gap: 16px;
     align-items: center;
     height: 48px;
     position: fixed;
@@ -12,12 +11,19 @@
     padding: 0 16px;
 }
 
+@media only screen and (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+}
+
 .info_link {
     display: flex;
     align-items: center;
     color: #ffffff !important;
     cursor: pointer;
     margin-top: 6px !important;
+    margin-right: 16px !important;
 }
 
 .github_icon {

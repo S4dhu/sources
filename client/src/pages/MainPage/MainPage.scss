@@ -8,3 +8,9 @@ $mainColor: #ffffff;
 .sidebarGap {
     margin-left: 250px;
 }
+
+@media only screen and (max-width: 768px) {
+    .sidebarGap {
+        margin: 0;
+    }
+}

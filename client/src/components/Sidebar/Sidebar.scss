@@ -20,6 +20,12 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .sidebar-wrapper {
+    display: none;
+  }
+}
+
 .sidebar-title {
   width: 100%;
   line-height: 40px;
